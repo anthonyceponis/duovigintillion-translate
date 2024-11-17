@@ -4,6 +4,9 @@ If you have not already looked it up, duovigintillion is the number 1 followed b
 ### Motivation
 This project was mostly a playground for learning how transformer models work, so I have not put much effort into actually making this translator that good.
 
+### Demo
+![Translating the sentence "How old are you?" to Italian using the translator](./duovigintillion-translate.gif)
+
 ### Setup
 Note that I developed this in WSL on a windows 11 machine with cuda support for gpu parallelisation. If you do not have the exact same machine, you will need to figure out how to make this work yourself.
 
