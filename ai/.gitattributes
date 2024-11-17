@@ -1,2 +1,1 @@
 *.pt filter=lfs diff=lfs merge=lfs -text
-opus_books_weights/tmodel_19.pt filter=lfs diff=lfs merge=lfs -text

@@ -258,7 +258,7 @@ def translate_sentence(sentence, verbose=False):
     if model_filename:
         if verbose:
             print(f'Preloading model {model_filename}')
-        state = torch.load(model_filename, map_location=device)
+        state = torch.load(model_filename)
         model.load_state_dict(state['model_state_dict'])
     else:
         raise Exception("No model to preload, please specify model to load.")
