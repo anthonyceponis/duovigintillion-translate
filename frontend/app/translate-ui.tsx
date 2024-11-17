@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 export default function TranslateUI() {
   const [sourceText, setSourceText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleTranslate = async () => {
+    setIsLoading(true);
     const res = await fetch(
       `http://localhost:5000/translate?text=${sourceText}`,
     );
@@ -15,6 +17,7 @@ export default function TranslateUI() {
 
     const { translated_text } = await res.json();
     setTranslatedText(translated_text);
+    setIsLoading(false);
   };
 
   return (
@@ -29,7 +32,7 @@ export default function TranslateUI() {
             onChange={(e) => setSourceText(e.target.value)}
           />
         </div>
-        <div>
+        <div className="flex flex-col justify-center items-center">
           <h3 className="mb-3">Italian</h3>
           <textarea
             className="w-full h-40 p-2 border rounded-md resize-none bg-gray-100"
@@ -41,10 +44,17 @@ export default function TranslateUI() {
       </div>
       <Button
         onClick={handleTranslate}
-        disabled={sourceText.length === 0}
+        disabled={sourceText.length === 0 || isLoading}
         className="w-full "
       >
-        Translate
+        {isLoading ? (
+          <div className="flex gap-x-3 items-center">
+            <div>Loading </div>
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          </div>
+        ) : (
+          <div>Translate</div>
+        )}
       </Button>
       <p className="text-neutral-400 text-xs">
         <b className="text-black font-semibold">Note:</b> The purpose of this
