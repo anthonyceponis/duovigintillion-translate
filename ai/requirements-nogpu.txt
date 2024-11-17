@@ -1,0 +1,7 @@
+jupyter
+torch==2.5.0 
+torchmetrics
+tensorboard
+datasets
+tokenizers
+torchtext==0.6.0
